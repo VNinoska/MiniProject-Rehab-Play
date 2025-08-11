@@ -6,7 +6,6 @@ import math
 import numpy as np
 import pygame
 
-
 mp_hands = mp.solutions.hands
 
 # =========================
@@ -191,7 +190,7 @@ def run_game(cam_w, cam_h):
                 else:
                     spawn_interval = 1.5  # valor normal
                 
-                last_spawn = now
+                last_spawn= now
 
             for ball in balls[:]:
                 br = ball["radius"]
@@ -258,7 +257,8 @@ def run_game(cam_w, cam_h):
                             cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
                 cv2.putText(frame, "Presiona ESPACIO para reiniciar", (50, height//2 + 50),
                             cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 255, 255), 2)
-
+                pygame.mixer.music.stop()
+            
             cv2.putText(frame, f"Puntaje: {score}", (10, 40),
                         cv2.FONT_HERSHEY_SIMPLEX, 1.2, (255, 255, 0), 3)
             cv2.putText(frame, f"Bolas: {len(balls)}", (width-150, 40),
@@ -277,6 +277,7 @@ def run_game(cam_w, cam_h):
                 score = 0
                 paused = False
                 last_spawn = time.time()
+                pygame.mixer.music.play(-1)
 
     cap.release()
     cv2.destroyAllWindows()
@@ -436,8 +437,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
-
 
