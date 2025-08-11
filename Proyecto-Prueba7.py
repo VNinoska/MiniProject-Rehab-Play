@@ -88,7 +88,7 @@ def spawn_ball(w, h, radius=20):
 
     if tipo == TIPO_SLIDER:
         cx = random.randint(radius + SLIDER_RADIO + 20, w - SLIDER_RADIO - radius - 20)
-        cy = random.randint(radius + SLIDER_RADIO + 20, h - SLIDER_RADIO - radius - 20)
+        cy = random.randint(radius + SLIDER_RADIO + 20, h - SLIDER_RADIO - radius - 120) ##########################
         ang_ini = random.randint(0, 360 - SLIDER_ANGULO)
         ang_fin = ang_ini + SLIDER_ANGULO
 
@@ -114,7 +114,7 @@ def spawn_ball(w, h, radius=20):
     elif tipo == TIPO_ARCO_TIMER:
         return {
             "tipo": tipo,
-            "pos": (random.randint(radius, w - radius), random.randint(radius, h - radius)),
+            "pos": (random.randint(radius, w - radius), random.randint(radius, h - radius-100)),
             "radius": radius,
             "spawn_time": time.time()
         }
@@ -122,7 +122,7 @@ def spawn_ball(w, h, radius=20):
     else:
         return {
             "tipo": tipo,
-            "pos": (random.randint(radius, w - radius), random.randint(radius, h - radius)),
+            "pos": (random.randint(radius, w - radius), random.randint(radius, h - radius-100)),
             "radius": radius
         }
 
@@ -271,6 +271,7 @@ def run_game(cam_w, cam_h):
 
             key = cv2.waitKey(1) & 0xFF
             if key == 27:  # ESC para salir del juego a menú
+                pygame.mixer.music.stop()
                 break
             if key == 32 and paused:  # SPACE para reiniciar
                 balls.clear()
@@ -437,4 +438,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
