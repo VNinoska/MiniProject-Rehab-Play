@@ -181,8 +181,16 @@ def run_game(cam_w, cam_h):
             now = time.time()
 
             if not paused and now - last_spawn >= spawn_interval:
-                balls.append(spawn_ball(width, height, radius=20))
-                last_spawn = now
+                nueva_bola = spawn_ball(width, height, radius=20)
+                balls.append(nueva_bola)
+
+                # Ajustar intervalo según tipo
+                if nueva_bola["tipo"] == TIPO_SLIDER:
+                    spawn_interval = SLIDER_TIEMPO * 1.0  #espera más tiempo cuando aparece el slider
+                else:
+                    spawn_interval = 1.5  # valor normal
+                
+                last_spawn = now
 
             for ball in balls[:]:
                 br = ball["radius"]
@@ -424,5 +432,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
