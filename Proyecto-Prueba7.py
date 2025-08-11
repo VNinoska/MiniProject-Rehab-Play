@@ -260,11 +260,14 @@ def run_game(cam_w, cam_h):
                             cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 255, 255), 2)
 
             cv2.putText(frame, f"Puntaje: {score}", (10, 40),
-                        cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 0, 255), 3)
-            cv2.putText(frame, f"Bolas: {len(balls)}", (10, 80),
+                        cv2.FONT_HERSHEY_SIMPLEX, 1.2, (255, 255, 0), 3)
+            cv2.putText(frame, f"Bolas: {len(balls)}", (width-150, 40),
                         cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 255, 255), 2)
+            
+            cv2.putText(frame, "Pon la palma sobre las pelotas para sumar puntos", (10, height-15), #mensaje que aparece en pantalla, pueden cambiar 
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255,255,255), 2)
 
-            cv2.imshow("Osu-Replica", frame)
+            cv2.imshow("Osu-Replica [Presiona \"Esc\" para salir]", frame)
 
             key = cv2.waitKey(1) & 0xFF
             if key == 27:  # ESC para salir del juego a menú
@@ -433,6 +436,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
