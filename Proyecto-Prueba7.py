@@ -6,15 +6,6 @@ import math
 import numpy as np
 import pygame
 
-# =========================
-#     AUDIO (opcional)
-# =========================
-try:
-    pygame.mixer.init()
-    pygame.mixer.music.load("Action - Daiki Yamashita (1).mp3")
-    pygame.mixer.music.play(-1)
-except Exception as e:
-    print("Aviso: no se pudo iniciar el audio:", e)
 
 mp_hands = mp.solutions.hands
 
@@ -137,6 +128,16 @@ def spawn_ball(w, h, radius=20):
         }
 
 def run_game(cam_w, cam_h):
+    # =========================
+    #     AUDIO (opcional)
+    # =========================
+    try:
+        pygame.mixer.init()
+        pygame.mixer.music.load("Action - Daiki Yamashita (1).mp3")
+        pygame.mixer.music.play(-1)
+    except Exception as e:
+        print("Aviso: no se pudo iniciar el audio:", e)
+
     cap = cv2.VideoCapture(0)
     if not cap.isOpened():
         print("No se pudo abrir la cámara.")
@@ -432,6 +433,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
