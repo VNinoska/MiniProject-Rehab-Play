@@ -80,6 +80,9 @@ def mouse_callback(event, x, y, flags, param):
 # =========================
 #    LÓGICA DEL JUEGO
 # =========================
+
+MARGEN_SUPERIOR = 80  # pixeles de zona prohibida arriba
+
 def spawn_ball(w, h, radius=20):
     tipo = random.choices(
         [TIPO_NORMAL, TIPO_ARCO_TIMER, TIPO_SLIDER],
@@ -88,7 +91,7 @@ def spawn_ball(w, h, radius=20):
 
     if tipo == TIPO_SLIDER:
         cx = random.randint(radius + SLIDER_RADIO + 20, w - SLIDER_RADIO - radius - 20)
-        cy = random.randint(radius + SLIDER_RADIO + 20, h - SLIDER_RADIO - radius - 120) ##########################
+        cy = random.randint(MARGEN_SUPERIOR + radius + SLIDER_RADIO + 20, h - SLIDER_RADIO - radius - 20)
         ang_ini = random.randint(0, 360 - SLIDER_ANGULO)
         ang_fin = ang_ini + SLIDER_ANGULO
 
@@ -114,7 +117,7 @@ def spawn_ball(w, h, radius=20):
     elif tipo == TIPO_ARCO_TIMER:
         return {
             "tipo": tipo,
-            "pos": (random.randint(radius, w - radius), random.randint(radius, h - radius-100)),
+            "pos": (random.randint(radius, w - radius), random.randint(MARGEN_SUPERIOR + radius, h - radius)),
             "radius": radius,
             "spawn_time": time.time()
         }
@@ -122,7 +125,7 @@ def spawn_ball(w, h, radius=20):
     else:
         return {
             "tipo": tipo,
-            "pos": (random.randint(radius, w - radius), random.randint(radius, h - radius-100)),
+            "pos": (random.randint(MARGEN_SUPERIOR + radius, w - radius), random.randint(radius, h - radius)),
             "radius": radius
         }
 
@@ -438,3 +441,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
