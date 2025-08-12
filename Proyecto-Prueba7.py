@@ -15,7 +15,7 @@ ARCO_DURACION = 2.0       # Tiempo límite para bolas con gusanito
 SLIDER_TIEMPO = 3.0       # Tiempo total para recorrer el slider
 SLIDER_RADIO = 100        # Radio del arco del slider
 SLIDER_ANGULO = 120       # Amplitud del arco en grados
-SLIDER_PUNTOS = 20        # Cantidad de círculos en el slider
+SLIDER_PUNTOS = 30        # Cantidad de círculos en el slider
 SLIDER_TOLERANCIA_INICIO = 10  # Puntos iniciales donde se puede enganchar
 SEGUIR_RANGO = 40         # Distancia máxima para seguir activo
 
@@ -441,4 +441,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
